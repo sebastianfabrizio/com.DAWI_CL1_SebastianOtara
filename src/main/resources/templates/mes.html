@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header">
+        Ingrese un mes en número
+    </div>
+    <div class="card-body">
+        <form th:action="@{/mesprocesado}" method="post"
+              th:object="${mesmodel}">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="txtmes" th:field="*{numeromes}">
+                <label for="txtmes">Dígito</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Procesar mes</button>
+        </form>
+    </div>
+
+</div>
+
+<div th:if="${mes != null}" class="card mt-3">
+    <div class="card-body">
+        <p>El mes que has ingresado es: <span th:text="${mes}"></span></p>
+    </div>
+
+</body>
+</html>

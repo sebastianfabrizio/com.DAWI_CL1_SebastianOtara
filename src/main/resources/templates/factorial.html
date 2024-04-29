@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Factorial Calculator</title>
+</head>
+<body>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header">
+        Calculadora de Factorial
+    </div>
+    <div class="card-body">
+        <form th:action="@{/calcularfactorial}" method="post" th:object="${factorial}">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="txtNumero" th:field="*{valor}">
+                <label for="txtNumero">Ingresa un número</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Calcular factorial</button>
+        </form>
+    </div>
+</div>
+
+<div th:if="${factorial.factorial != null}" class="card mt-3">
+    <div class="card-body">
+        <p>El factorial de <span th:text="${factorial.valor}"></span> es: <span th:text="${factorial.factorial}"></span></p>
+    </div>
+</div>
+</body>
+</html>

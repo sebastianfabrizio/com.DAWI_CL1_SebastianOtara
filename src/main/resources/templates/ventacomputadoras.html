@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<body>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header">
+        Ingrese una cantidad de computadoras
+    </div>
+    <div class="card-body">
+        <form th:action="@{/cantidadcomputadoras}" method="post"
+              th:object="${computadoramodel}">
+            <div class="form-floating mb-3">
+    <input type="number" class="form-control" id="txtcomputadora" th:field="*{cantidad}">
+                <label for="txtcomputadora">Ingresar cantidad</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Calcular monto a pagar <i class="fa-solid fa-hand-holding-dollar"></i></button>
+        </form>
+    </div>
+</div>
+
+<div th:if="${totalPagar != null}" class="card mt-3">
+        <p>El monto a pagar es: $<span th:text="${totalPagar}"></span></p>
+</div>
+
+</body>
+</html>
